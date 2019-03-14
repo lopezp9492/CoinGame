@@ -8,6 +8,8 @@
 
 # Functions
 
+# Check if taking coins from specified index is valid.
+# ie can we take a coin from this index?
 def canTake(coinString, index, gapOpen, gapIndex)
 	
 	# minus one so it doesnt allow taking just the last coin on the right
@@ -43,9 +45,6 @@ def take(stringTest, selection)
 	coinStr = coinArray.join
 	#puts "coinStr: #{coinStr}"
 
-	coinString = coinStr
-	coinsTaken = takenStr
-
 	return coinStr, takenStr
 end
 
@@ -75,7 +74,20 @@ def place(coinString, selectionIndex, coinsTaken)
 	return coinStr
 end
 
+def cleanEnd(coinString, gapIndex)
 
+	subIndex = coinString.length-3
+	puts "gapIndex #{gapIndex}"
+	puts "subIndex #{subIndex}"
+
+	if gapIndex == subIndex-1
+		puts "clean up"
+		coinString = coinString[0..subIndex]
+		puts"coinString: #{coinString}"
+	end
+	puts "coinString: #{coinString}"
+	return coinString
+end
 
 # Variables
 MaxTurns = 5
@@ -147,6 +159,9 @@ while (turn <= MaxTurns)
 		coinString = place(coinString, userSelection, coinsTaken)
 		puts "Coins placed at the end"
 	end
+
+	# Clean up ends
+	coinString = cleanEnd(coinString, gapIndex)
 
 	turn = turn+1
 	taking = true
