@@ -1,6 +1,5 @@
 =begin
 	Pedro Lopez
-	015892940
 	Assignment2
 	ArrayPartitioner
 =end
@@ -76,28 +75,36 @@ end
 
 
 # Variables
-array = [88, 45, 43, 22, 1, 3, 9, 99, 22, 10]
-#array = [28, 26, 25, 11, 16, 12, 24, 29, 6, 10]
-
-userInput = 11
-#userInput = 17
-
+array = []
+testValue = 0
+inputSize = 0
 p_index = 0
 
 # Get User Input
+puts "Enter the number of elements in the array: n"
+inputSize = gets.to_i
 
+i = 0
+x = 0
+while(i<inputSize)
+	puts "Enter value #{i}:"
+	x = gets.to_i
+	array.push(x)
+	i+=1
+end
+
+puts"Enter Test Value"
+testValue = gets.to_i
+
+# Display Array Contents
 puts array.inspect
-
 
 # Call function
-p_index, array = partition(array, userInput)
+p_index, array = partition(array, testValue)
 
 # Print Result
-
-
 puts "\n---------------"
-puts "Final Result"
+puts "Result"
 puts array.inspect
 puts "p index #{p_index}"
-puts "\nGame Over\n" 
-sleep(20) # wait x seconds before closing program
+sleep(10) # wait x seconds before closing program
